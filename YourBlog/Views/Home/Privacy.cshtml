@@ -1,6 +1,57 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "About Me";
+    string[] jokes = {
+        "Why don’t scientists trust atoms? Because they make up everything!",
+        "I told my wife she should embrace her mistakes. She gave me a hug!",
+        "Why don’t skeletons fight each other? They don’t have the guts.",
+        "What did the ocean say to the beach? Nothing, it just waved.",
+        "Parallel lines have so much in common. It’s a shame they’ll never meet."
+    };
+    int jokeIndex = DateTime.Now.Day % jokes.Length;
+    string dailyJoke = jokes[jokeIndex];
 }
+
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<section>
+    <h2>Welcome to My Personal Blog!</h2>
+    <p>
+        Hello! My name is Bogdan, and I am passionate about learning new things.
+        This blog is a place where I share my thoughts, experiences, and insights about various topics that interest me.
+    </p>
+</section>
+
+<section>
+    <h2>About Me</h2>
+    <p>
+        I am a student with a deep love for playing voleyboll
+
+    </p>
+</section>
+
+<section>
+    <h2>My Journey</h2>
+    <p>
+        My journey began when [describe a bit of your background, how you got into your field or hobby].
+        Since then, I have been continuously learning and growing, always seeking new experiences and knowledge.
+    </p>
+</section>
+
+<section>
+    <h2>Daily Joke</h2>
+    <p><strong>@dailyJoke</strong></p>
+</section>
+
+<section>
+    <h2>Contact</h2>
+    <p>
+        If you want to connect with me, feel free to reach out via email at <a href="mailto:bereznykbohdan@gmail.com">bereznykbohdan@gmail.com</a>
+        or follow me on social media.
+    </p>
+</section>
+<section>
+    <h2>My Instagram</h2>
+    <p>
+        Follow me on Instagram: <a href="https://www.instagram.com/" target="_blank">_ya_bodia_</a>
+    </p>
+</section>
