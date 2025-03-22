@@ -1,0 +1,63 @@
+﻿@{
+    var subscriptions = new[]
+    {
+        new { Name = "Basic", Price = 5, Features = new[] { "Access to basic content", "Email support" } },
+        new { Name = "Standard", Price = 15, Features = new[] { "All with Basic", "Advanced content", "Priority support" } },
+        new { Name = "Premium", Price = 30, Features = new[] { "All with Standard", "Exclusive content", "Personal manager" } }
+    };
+}
+
+<h2>
+    Choose your subscription plan
+</h2>
+<div class="subscription-container">
+    @foreach (var sub in subscriptions)
+    {
+        <div class="subscription-plan">
+            <h3>@sub.Name</h3>
+            <p class="price">
+                $@sub.Price /
+                month
+            </p>
+            <ul>
+                @foreach (var feature in sub.Features)
+                {
+                    <li>@feature</li>
+                }
+            </ul>
+            <button class="subscribe-button">
+                Subscribe
+            </button>
+        </div>
+    }
+</div>
+
+<style>
+    .subscription-container {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+    .subscription-plan {
+        border: 2px solid #007bff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 30%;
+    }
+    .price {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .subscribe-button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .subscribe-button:hover {
+        background-color: #0056b3;
+    }
+</style>
