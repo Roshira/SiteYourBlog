@@ -1,13 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using YourBlog.Models.UserModels;
 
-namespace YourBlog.Data
+namespace YourBlog.Models.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class YourBlogDBContext : IdentityDbContext<User>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options) { }
+        public YourBlogDBContext(DbContextOptions<YourBlogDBContext> options)
+            : base(options)
+        {
+        }
 
-   
+ 
     }
 }
