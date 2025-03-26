@@ -11,6 +11,16 @@ namespace YourBlog.Models.Data
         {
         }
 
- 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            // Додаткові конфігурації моделі, якщо потрібно
+            builder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.IsSubscribed)
+                    .HasDefaultValue(false);
+            });
+        }
     }
 }
