@@ -23,9 +23,21 @@
             </ul>
             <!-- Кнопка Profile у правому куті -->
             <div>
-                <a asp-controller="Home" asp-action="Privacy" style="text-decoration: none; color: black; display: flex; align-items: center; gap: 5px;">
-                    <span style="font-size: 20px;">👤</span> Profile
-                </a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form asp-controller="Accounts" asp-action="Logout" method="post" id="logoutForm" style="display: inline;">
+                        <button type="submit" style="background: none; border: none; color: black; cursor: pointer; font-size: inherit;">
+                            <span style="font-size: 20px;">👤</span> Logout (@User.Identity.Name)
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <div style="display: flex; gap: 15px;">
+                        <a asp-controller="Accounts" asp-action="Login" style="text-decoration: none; color: black;">Login</a>
+                        <a asp-controller="Accounts" asp-action="Register" style="text-decoration: none; color: black;">Register</a>
+                    </div>
+                }
             </div>
         </nav>
     </header>
