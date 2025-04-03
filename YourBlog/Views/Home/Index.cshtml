@@ -1,8 +1,55 @@
-﻿@{
+﻿@model List<News>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="news-container">
+    @if (Model.Any())
+    {
+        @foreach (var news in Model)
+        {
+            <div class="news-item @(news.AccessLevel == 2 ? "premium" : "")">
+                <h3>@news.Title</h3>
+                <p>@news.Content</p>
+                <small>
+                    @news.CreatedAt.ToString("g") |
+                    @switch (news.AccessLevel)
+                    {
+                        case 0:
+                            <span>Public</span>
+                            ; break;
+                        case 1:
+                            <span>For registered</span>
+                            ; break;
+                        case 2:
+                            <span>For subscribers</span>
+                            ; break;
+                    }
+                </small>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No news available</p>
+    }
 </div>
+
+<style>
+    .news-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .news-item {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+        .news-item.premium {
+            background-color: #fffaf0;
+            border-left: 4px solid gold;
+        }
+</style>
