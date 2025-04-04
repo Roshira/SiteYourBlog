@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace YourBlog.Models.UserModels
+namespace YourBlog.Models.ViewModels
 {
-    public class User : IdentityUser
+    public class UserViewModel : IdentityUser
     {
         [Required]
         [Display(Name = "Login")]

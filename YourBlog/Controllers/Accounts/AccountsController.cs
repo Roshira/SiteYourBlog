@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using YourBlog.Models.UserModels;
+using YourBlog.Models.Users.Auth;
+using YourBlog.Models.ViewModels;
 
 namespace YourBlog.Controllers
 {
     public class AccountsController : Controller
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<UserViewModel> _userManager;
+        private readonly SignInManager<UserViewModel> _signInManager;
 
-        public AccountsController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountsController(UserManager<UserViewModel> userManager, SignInManager<UserViewModel> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -26,7 +27,7 @@ namespace YourBlog.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User
+                var user = new UserViewModel
                 {
                     UserName = model.UserName,
                     Email = model.Email,
