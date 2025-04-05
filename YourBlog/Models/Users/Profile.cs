@@ -1,18 +1,21 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using YourBlog.Models.ViewModels;
 
-namespace YourBlog.Models.ViewModels
+namespace YourBlog.Models.Users
 {
-    public class UserViewModel : IdentityUser
+    public class Profile
     {
         [Required]
         [Display(Name = "Login")]
-        public override string UserName { get; set; }
+        public  string UserName { get; set; }
 
         [Required]
         [EmailAddress]
         [Display(Name = "Mail")]
-        public override string Email { get; set; }
+        public  string Email { get; set; }
 
         [Display(Name = "Subscribe")]
         public bool IsSubscribed { get; set; } = false;
@@ -26,8 +29,8 @@ namespace YourBlog.Models.ViewModels
         public string? ProfilePictureUrl { get; set; }
 
         [Display(Name = "Profile Created")]
-        public DateTime ProfileCreated { get; set; } = DateTime.UtcNow;
+        public DateTime ProfileCreated { get; set; }
 
-        public List<UserFavoriteNewsViewModel> UserFavoriteNews { get; set; }
+        public UserViewModel FavoriteNews { get; set; }
     }
 }
