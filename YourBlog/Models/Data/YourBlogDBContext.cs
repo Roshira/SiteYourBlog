@@ -22,13 +22,13 @@ namespace YourBlog.Models.Data
 
             // Налаштування складеного первинного ключа
             modelBuilder.Entity<UserFavoriteNewsViewModel>()
-                .HasKey(ufn => new { ufn.UserId, ufn.NewsId });
+                .HasKey(ufn => new { ufn.UserName, ufn.NewsId });
 
             // Налаштування зв'язку з користувачем
             modelBuilder.Entity<UserFavoriteNewsViewModel>()
                 .HasOne(ufn => ufn.User)
                 .WithMany(u => u.UserFavoriteNews)
-                .HasForeignKey(ufn => ufn.UserId);
+                .HasForeignKey(ufn => ufn.UserName);
 
             // Налаштування зв'язку з новиною
             modelBuilder.Entity<UserFavoriteNewsViewModel>()

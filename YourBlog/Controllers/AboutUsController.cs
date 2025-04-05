@@ -2,9 +2,9 @@
 
 namespace YourBlog.Controllers
 {
-    public class ContactController : Controller
+    public class AboutUsController : Controller
     {
-        public IActionResult ContactInfo()
+        public IActionResult AboutUs()
         {
             return View();
         }

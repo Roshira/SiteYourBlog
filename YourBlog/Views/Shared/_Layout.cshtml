@@ -15,10 +15,10 @@
                 <a href="/" style="font-size: 24px; font-weight: bold; text-decoration: none; color: black;">YourBlog</a>
             </div>
             <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
-                <li><a asp-controller="Home" asp-action="Index" style="text-decoration: none; color: black;">Home</a></li>
+                <li><a asp-controller="MainPage" asp-action="ShowMainPage" style="text-decoration: none; color: black;">Home</a></li>
                 <li><a asp-controller="Subscribe" asp-action="Subscribe" style="text-decoration: none; color: black;">Subscribe</a></li>
-                <li><a asp-controller="Home" asp-action="Privacy" style="text-decoration: none; color: black;">About us</a></li>
-                <li><a asp-controller="Contact" asp-action="Index" style="text-decoration: none; color: black;">Contact</a></li>
+                <li><a asp-controller="AboutUs" asp-action="AboutUs" style="text-decoration: none; color: black;">About us</a></li>
+                <li><a asp-controller="Contact" asp-action="ContactInfo" style="text-decoration: none; color: black;">Contact</a></li>
             </ul>
             <div>
                 @if (User.Identity.IsAuthenticated)
