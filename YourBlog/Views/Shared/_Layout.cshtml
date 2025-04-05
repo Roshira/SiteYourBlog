@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-   
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - YourBlog</title>
@@ -19,9 +18,8 @@
                 <li><a asp-controller="Home" asp-action="Index" style="text-decoration: none; color: black;">Home</a></li>
                 <li><a asp-controller="Subscribe" asp-action="Subscribe" style="text-decoration: none; color: black;">Subscribe</a></li>
                 <li><a asp-controller="Home" asp-action="Privacy" style="text-decoration: none; color: black;">About us</a></li>
-
+                <li><a asp-controller="Contact" asp-action="Index" style="text-decoration: none; color: black;">Contact</a></li>
             </ul>
-            <!-- Кнопка Profile у правому куті -->
             <div>
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -53,6 +51,7 @@
             &copy; 2025 - YourBlog - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

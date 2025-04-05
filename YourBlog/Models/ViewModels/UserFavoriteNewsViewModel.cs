@@ -18,4 +18,5 @@ public class UserFavoriteNewsViewModel
 
     [ForeignKey("NewsId")]
     public NewsViewModel News { get; set; }
+    public object UserId { get; internal set; }
 }
