@@ -7,7 +7,7 @@ public class UserFavoriteNewsViewModel
 {
     [Key]
     [Column(Order = 1)]
-    public string UserName { get; set; }  // Змінено з `int` на `string`
+    public string UserID { get; set; }  // Змінено з `int` на `string`
 
     [ForeignKey("UserId")]
     public UserViewModel User { get; set; }
@@ -18,5 +18,5 @@ public class UserFavoriteNewsViewModel
 
     [ForeignKey("NewsId")]
     public NewsViewModel News { get; set; }
-    public object UserId { get; internal set; }
+   
 }

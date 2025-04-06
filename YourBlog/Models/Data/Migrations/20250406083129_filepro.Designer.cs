@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YourBlog.Models.Data;
 
@@ -11,9 +12,11 @@ using YourBlog.Models.Data;
 namespace YourBlog.Migrations
 {
     [DbContext(typeof(YourBlogDBContext))]
-    partial class YourBlogDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250406083129_filepro")]
+    partial class filepro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,7 +160,7 @@ namespace YourBlog.Migrations
 
             modelBuilder.Entity("UserFavoriteNewsViewModel", b =>
                 {
-                    b.Property<string>("UserID")
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(450)")
                         .HasColumnOrder(1);
 
@@ -169,7 +172,7 @@ namespace YourBlog.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserID", "NewsId");
+                    b.HasKey("UserName", "NewsId");
 
                     b.HasIndex("NewsId");
 
@@ -366,7 +369,7 @@ namespace YourBlog.Migrations
 
                     b.HasOne("YourBlog.Models.ViewModels.UserViewModel", "User")
                         .WithMany("UserFavoriteNews")
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
