@@ -39,7 +39,7 @@ namespace YourBlog.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ShowMainPage", "MainPage");
                 }
 
                 foreach (var error in result.Errors)
@@ -88,7 +88,7 @@ namespace YourBlog.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ShowMainPage", "MainPage");
         }
 
         private IActionResult RedirectToLocal(string returnUrl)
@@ -99,7 +99,7 @@ namespace YourBlog.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ShowMainPage", "MainPage");
             }
         }
     }
