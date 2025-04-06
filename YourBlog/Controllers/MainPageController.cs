@@ -4,21 +4,16 @@ using YourBlog.Models;
 
 namespace YourBlog.Controllers
 {
-    public class HomeController : Controller
+    public class MainPageController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<MainPageController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public MainPageController(ILogger<MainPageController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public IActionResult ShowMainPage()
         {
             return View();
         }
@@ -28,5 +23,6 @@ namespace YourBlog.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+       
     }
 }
