@@ -12,8 +12,8 @@ using YourBlog.Models.Data;
 namespace YourBlog.Migrations
 {
     [DbContext(typeof(YourBlogDBContext))]
-    [Migration("20250404124400_UpdateNewsModel")]
-    partial class UpdateNewsModel
+    [Migration("20250406140854_deletedErrors")]
+    partial class deletedErrors
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,6 +212,10 @@ namespace YourBlog.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Bio")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -223,6 +227,9 @@ namespace YourBlog.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsSubscribed")
                         .HasColumnType("bit");
@@ -249,6 +256,12 @@ namespace YourBlog.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("ProfileCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProfilePictureUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");

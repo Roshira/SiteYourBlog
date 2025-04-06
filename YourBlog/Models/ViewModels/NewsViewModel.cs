@@ -37,7 +37,6 @@ namespace YourBlog.Models.ViewModel
         [StringLength(200)]
         public string MetaDescription { get; set; }
 
-        public List<UserFavoriteNewsViewModel> UserFavoriteNews { get; set; }
     }
 
     public enum AccessLevel

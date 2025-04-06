@@ -31,6 +31,5 @@ namespace YourBlog.Models.Users
         [Display(Name = "Profile Created")]
         public DateTime ProfileCreated { get; set; }
 
-        public UserViewModel FavoriteNews { get; set; }
     }
 }

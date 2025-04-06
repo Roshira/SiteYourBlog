@@ -28,6 +28,5 @@ namespace YourBlog.Models.ViewModels
         [Display(Name = "Profile Created")]
         public DateTime ProfileCreated { get; set; } = DateTime.UtcNow;
 
-        public List<UserFavoriteNewsViewModel> UserFavoriteNews { get; set; }
     }
 }

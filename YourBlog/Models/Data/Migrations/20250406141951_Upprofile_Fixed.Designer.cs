@@ -12,8 +12,8 @@ using YourBlog.Models.Data;
 namespace YourBlog.Migrations
 {
     [DbContext(typeof(YourBlogDBContext))]
-    [Migration("20250406083129_filepro")]
-    partial class filepro
+    [Migration("20250406141951_Upprofile_Fixed")]
+    partial class Upprofile_Fixed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -156,27 +156,6 @@ namespace YourBlog.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("UserFavoriteNewsViewModel", b =>
-                {
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnOrder(1);
-
-                    b.Property<int>("NewsId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(2);
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserName", "NewsId");
-
-                    b.HasIndex("NewsId");
-
-                    b.ToTable("UserFavoriteNews");
                 });
 
             modelBuilder.Entity("YourBlog.Models.ViewModel.NewsViewModel", b =>
@@ -357,35 +336,6 @@ namespace YourBlog.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("UserFavoriteNewsViewModel", b =>
-                {
-                    b.HasOne("YourBlog.Models.ViewModel.NewsViewModel", "News")
-                        .WithMany("UserFavoriteNews")
-                        .HasForeignKey("NewsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("YourBlog.Models.ViewModels.UserViewModel", "User")
-                        .WithMany("UserFavoriteNews")
-                        .HasForeignKey("UserName")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("News");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("YourBlog.Models.ViewModel.NewsViewModel", b =>
-                {
-                    b.Navigation("UserFavoriteNews");
-                });
-
-            modelBuilder.Entity("YourBlog.Models.ViewModels.UserViewModel", b =>
-                {
-                    b.Navigation("UserFavoriteNews");
                 });
 #pragma warning restore 612, 618
         }
