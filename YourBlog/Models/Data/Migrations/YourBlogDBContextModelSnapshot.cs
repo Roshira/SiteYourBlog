@@ -155,23 +155,6 @@ namespace YourBlog.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("UserFavoriteNewsViewModel", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnOrder(1);
-
-                    b.Property<int>("NewsId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(2);
-
-                    b.HasKey("UserId", "NewsId");
-
-                    b.HasIndex("NewsId");
-
-                    b.ToTable("UserFavoriteNews");
-                });
-
             modelBuilder.Entity("YourBlog.Models.ViewModel.NewsViewModel", b =>
                 {
                     b.Property<int>("Id")
@@ -350,35 +333,6 @@ namespace YourBlog.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("UserFavoriteNewsViewModel", b =>
-                {
-                    b.HasOne("YourBlog.Models.ViewModel.NewsViewModel", "News")
-                        .WithMany("UserFavoriteNews")
-                        .HasForeignKey("NewsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("YourBlog.Models.ViewModels.UserViewModel", "User")
-                        .WithMany("UserFavoriteNews")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("News");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("YourBlog.Models.ViewModel.NewsViewModel", b =>
-                {
-                    b.Navigation("UserFavoriteNews");
-                });
-
-            modelBuilder.Entity("YourBlog.Models.ViewModels.UserViewModel", b =>
-                {
-                    b.Navigation("UserFavoriteNews");
                 });
 #pragma warning restore 612, 618
         }

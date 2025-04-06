@@ -5,7 +5,7 @@
 namespace YourBlog.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUserFavoriteNewsPrimaryKey1 : Migration
+    public partial class deletedErrors : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
