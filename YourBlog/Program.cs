@@ -1,28 +1,28 @@
-using Microsoft.AspNetCore.Identity;
+п»їusing Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using YourBlog.Models.Data;
 using YourBlog.Models.ViewModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Додаємо конфігурацію
+// Р”РѕРґР°С”РјРѕ РєРѕРЅС„С–РіСѓСЂР°С†С–СЋ
 var configuration = builder.Configuration;
 
-// Перевірка наявності рядка підключення
+// РџРµСЂРµРІС–СЂРєР° РЅР°СЏРІРЅРѕСЃС‚С– СЂСЏРґРєР° РїС–РґРєР»СЋС‡РµРЅРЅСЏ
 var connectionString = configuration.GetConnectionString("DefaultConnection");
 if (string.IsNullOrEmpty(connectionString))
 {
     throw new InvalidOperationException("Connection string 'DefaultConnection' not found in appsettings.json");
 }
 
-// Додаємо сервіс DbContext з перевіркою
+// Р”РѕРґР°С”РјРѕ СЃРµСЂРІС–СЃ DbContext Р· РїРµСЂРµРІС–СЂРєРѕСЋ
 builder.Services.AddDbContext<YourBlogDBContext>(options =>
 {
     options.UseSqlServer(connectionString);
     options.EnableSensitiveDataLogging(builder.Environment.IsDevelopment());
 });
 
-// Додаємо Identity
+// Р”РѕРґР°С”РјРѕ Identity
 builder.Services.AddIdentity<UserViewModel, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
@@ -38,7 +38,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Налаштування конвеєра HTTP
+// РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РєРѕРЅРІРµС”СЂР° HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -46,14 +46,14 @@ if (!app.Environment.IsDevelopment())
 }
 else
 {
-    // У режимі розробки застосовуємо міграції автоматично
+    // РЈ СЂРµР¶РёРјС– СЂРѕР·СЂРѕР±РєРё Р·Р°СЃС‚РѕСЃРѕРІСѓС”РјРѕ РјС–РіСЂР°С†С–С— Р°РІС‚РѕРјР°С‚РёС‡РЅРѕ
     using (var scope = app.Services.CreateScope())
     {
         var services = scope.ServiceProvider;
         try
         {
             var context = services.GetRequiredService<YourBlogDBContext>();
-            context.Database.Migrate(); // Автоматичне застосування міграцій
+            context.Database.Migrate(); // РђРІС‚РѕРјР°С‚РёС‡РЅРµ Р·Р°СЃС‚РѕСЃСѓРІР°РЅРЅСЏ РјС–РіСЂР°С†С–Р№
         }
         catch (Exception ex)
         {

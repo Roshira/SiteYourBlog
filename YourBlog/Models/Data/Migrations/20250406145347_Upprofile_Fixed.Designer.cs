@@ -12,8 +12,8 @@ using YourBlog.Models.Data;
 namespace YourBlog.Migrations
 {
     [DbContext(typeof(YourBlogDBContext))]
-    [Migration("20250403210221_AddNewsTable")]
-    partial class AddNewsTable
+    [Migration("20250406145347_Upprofile_Fixed")]
+    partial class Upprofile_Fixed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,7 +158,7 @@ namespace YourBlog.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("YourBlog.Models.NewsModels.News", b =>
+            modelBuilder.Entity("YourBlog.Models.ViewModel.NewsViewModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -166,9 +166,8 @@ namespace YourBlog.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AuthorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("AccessLevel")
+                        .HasColumnType("int");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -182,25 +181,40 @@ namespace YourBlog.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("MetaDescription")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("MetaKeywords")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("AuthorId");
+                    b.HasKey("Id");
 
                     b.ToTable("News");
                 });
 
-            modelBuilder.Entity("YourBlog.Models.UserModels.User", b =>
+            modelBuilder.Entity("YourBlog.Models.ViewModels.UserViewModel", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("Bio")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -213,6 +227,9 @@ namespace YourBlog.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsSubscribed")
                         .HasColumnType("bit");
@@ -239,6 +256,12 @@ namespace YourBlog.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("ProfileCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProfilePictureUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -275,7 +298,7 @@ namespace YourBlog.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("YourBlog.Models.UserModels.User", null)
+                    b.HasOne("YourBlog.Models.ViewModels.UserViewModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -284,7 +307,7 @@ namespace YourBlog.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("YourBlog.Models.UserModels.User", null)
+                    b.HasOne("YourBlog.Models.ViewModels.UserViewModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -299,7 +322,7 @@ namespace YourBlog.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("YourBlog.Models.UserModels.User", null)
+                    b.HasOne("YourBlog.Models.ViewModels.UserViewModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -308,22 +331,11 @@ namespace YourBlog.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("YourBlog.Models.UserModels.User", null)
+                    b.HasOne("YourBlog.Models.ViewModels.UserViewModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("YourBlog.Models.NewsModels.News", b =>
-                {
-                    b.HasOne("YourBlog.Models.UserModels.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Author");
                 });
 #pragma warning restore 612, 618
         }
