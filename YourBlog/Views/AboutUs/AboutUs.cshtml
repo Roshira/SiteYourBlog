@@ -11,47 +11,106 @@
     string dailyJoke = jokes[jokeIndex];
 }
 
-<h1>@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            border-radius: 12px;
+        }
 
-<section>
-    <h2>Welcome to My Personal Blog!</h2>
-    <p>
-        Hello! My name is Bogdan, and I am passionate about learning new things.
-        This blog is a place where I share my thoughts, experiences, and insights about various topics that interest me.
-    </p>
-</section>
+        h1 {
+            color: #222;
+            font-size: 2rem;
+            margin-top: 1rem;
+        }
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        I am a student with a deep love for playing voleyboll
+        section {
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 800px;
+            background-color: #ffffff;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+        }
 
-    </p>
-</section>
+        h2 {
+            color: #444;
+            margin-bottom: 0.5rem;
+        }
 
-<section>
-    <h2>My Journey</h2>
-    <p>
-        My journey began when [describe a bit of your background, how you got into your field or hobby].
-        Since then, I have been continuously learning and growing, always seeking new experiences and knowledge.
-    </p>
-</section>
+        p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
 
-<section>
-    <h2>Daily Joke</h2>
-    <p><strong>@dailyJoke</strong></p>
-</section>
+        a {
+            color: #007acc;
+            text-decoration: none;
+        }
 
-<section>
-    <h2>Contact</h2>
-    <p>
-        If you want to connect with me, feel free to reach out via email at <a href="mailto:bereznykbohdan@gmail.com">bereznykbohdan@gmail.com</a>
-        or follow me on social media.
-    </p>
-</section>
-<section>
-    <h2>My Instagram</h2>
-    <p>
-        Follow me on Instagram: <a href="https://www.instagram.com/" target="_blank">_ya_bodia_</a>
-    </p>
-</section>
+            a:hover {
+                text-decoration: underline;
+            }
+
+        strong {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h2>Welcome to My Personal Blog!</h2>
+        <p>
+            Hello! My name is Bogdan, and I am passionate about learning new things.
+            This blog is a place where I share my thoughts, experiences, and insights about various topics that interest me.
+        </p>
+    </section>
+
+    <section>
+        <h2>About Me</h2>
+        <p>
+            I am a student with a deep love for playing volleyball.
+        </p>
+    </section>
+
+    <section>
+        <h2>My Journey</h2>
+        <p>
+            My journey began when I first discovered how much joy I get from solving problems and exploring new technologies.
+            Since then, I have been continuously learning and growing, always seeking new experiences and knowledge.
+        </p>
+    </section>
+
+    <section>
+        <h2>Daily Joke</h2>
+        <p><strong>@dailyJoke</strong></p>
+    </section>
+
+    <section>
+        <h2>Contact</h2>
+        <p>
+            If you want to connect with me, feel free to reach out via email at
+            <a href="mailto:bereznykbohdan@gmail.com">bereznykbohdan@gmail.com</a>
+            or follow me on social media.
+        </p>
+    </section>
+
+    <section>
+        <h2>My Instagram</h2>
+        <p>
+            Follow me on Instagram: <a href="https://www.instagram.com/_ya_bodia_" target="_blank">_ya_bodia_</a>
+        </p>
+    </section>
+
+</body>
+</html>
