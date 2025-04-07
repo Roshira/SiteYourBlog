@@ -1,5 +1,4 @@
-﻿// In Models/ViewModels/UserViewModel.cs
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace YourBlog.Models.ViewModels

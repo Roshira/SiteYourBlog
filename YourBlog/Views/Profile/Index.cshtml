@@ -3,35 +3,38 @@
     ViewData["Title"] = "Profile";
 }
 
-<div class="container mt-4">
-    <h1>Your Profile</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Your Profile</h1>
 
-    <div class="row mt-4">
-        <div class="col-md-4">
+    <div class="row">
+        <div class="col-md-4 text-center">
             @if (!string.IsNullOrEmpty(Model.ProfilePictureUrl))
             {
-                <img src="@Model.ProfilePictureUrl" alt="Profile Picture" class="img-fluid rounded-circle mb-3" style="max-width: 200px;">
+                <img src="@Model.ProfilePictureUrl" alt="Profile Picture"
+                     class="img-fluid rounded-circle mb-3" style="max-width: 200px;" />
             }
             else
             {
-                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 200px; height: 200px;">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center"
+                     style="width: 200px; height: 200px;">
                     <span class="text-white" style="font-size: 3rem;">@Model.UserName[0]</span>
                 </div>
             }
-            <a asp-action="Edit" class="btn btn-primary mt-3">Edit Profile</a>
+
+            <a asp-action="Edit" class="btn btn-outline-primary mt-3">Edit Profile</a>
         </div>
 
         <div class="col-md-8">
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-body">
                     <h3 class="card-title">@Model.FullName</h3>
                     <h5 class="text-muted">@Model.UserName</h5>
 
-                    <hr>
+                    <hr />
 
                     <div class="mb-3">
                         <h5>About</h5>
-                        <p>@(string.IsNullOrEmpty(Model.Bio) ? "No bio yet" : Model.Bio)</p>
+                        <p>@(string.IsNullOrEmpty(Model.Bio) ? "No bio yet." : Model.Bio)</p>
                     </div>
 
                     <div class="mb-3">
@@ -40,9 +43,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <h5>Account</h5>
+                        <h5>Account Info</h5>
                         <p>Member since: @Model.ProfileCreated.ToShortDateString()</p>
-                        <p>Newsletter subscription: @(Model.IsSubscribed ? "Subscribed" : "Not subscribed")</p>
+                        <p>Newsletter: @(Model.IsSubscribed ? "Subscribed ✅" : "Not Subscribed ❌")</p>
                     </div>
 
                     <form asp-controller="Accounts" asp-action="Logout" method="post">
