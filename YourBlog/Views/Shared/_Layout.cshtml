@@ -24,7 +24,7 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div style="display: flex; gap: 15px; align-items: center;">
-                        <a asp-controller="Profile" asp-action="Index" style="text-decoration: none; color: black;">
+                        <a asp-controller="Profile" asp-action="YourProfile" style="text-decoration: none; color: black;">
                             <span style="font-size: 20px;">👤</span> Profile
                         </a>
                         <form asp-controller="Accounts" asp-action="Logout" method="post" style="display: inline;">
