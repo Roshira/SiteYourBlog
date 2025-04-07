@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Contact Us";
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,26 +18,20 @@
             min-height: 100vh;
         }
 
-        h1 {
-            font-size: 2rem;
-            margin: 1rem 0;
-            color: #222;
-        }
-
-        .container {
-            flex: 1;
-            max-width: 800px;
-            margin: 2rem auto;
+        section {
             padding: 2rem;
+            margin: 4rem auto 3rem auto; /* відступ зверху та знизу */
+            max-width: 800px;
             background-color: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            border: 2px solid #007bff; /* синя рамка */
         }
 
-        .card-title {
-            font-size: 1.25rem;
+        h2 {
             color: #444;
             margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
 
         ul {
@@ -47,7 +40,7 @@
         }
 
         li {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             font-size: 1.05rem;
         }
 
@@ -66,24 +59,24 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div>
-            <h2 class="card-title">Email us at:</h2>
-            <ul>
-                <li>
-                    <strong>Bogdan:</strong>
-                    <a href="mailto:bogdanpomasly@gmail.com">bogdanpomasly@gmail.com</a>
-                </li>
-                <li>
-                    <strong>Roma:</strong>
-                    <a href="mailto:email@mail.com">email@mail.com</a>
-                </li>
-                <li>
-                    <strong>Radion:</strong>
-                    <a href="mailto:email@mail.com">email@mail.com</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+
+    <section>
+        <h2>Email us at:</h2>
+        <ul>
+            <li>
+                <strong>Bogdan:</strong>
+                <a href="mailto:bogdanpomasly@gmail.com">bogdanpomasly@gmail.com</a>
+            </li>
+            <li>
+                <strong>Roma:</strong>
+                <a href="mailto:email@mail.com">email@mail.com</a>
+            </li>
+            <li>
+                <strong>Radion:</strong>
+                <a href="mailto:email@mail.com">email@mail.com</a>
+            </li>
+        </ul>
+    </section>
+
 </body>
 </html>

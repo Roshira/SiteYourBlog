@@ -12,7 +12,7 @@ using YourBlog.Models.Data;
 namespace YourBlog.Migrations
 {
     [DbContext(typeof(YourBlogDBContext))]
-    [Migration("20250406141951_Upprofile_Fixed")]
+
     partial class Upprofile_Fixed
     {
         /// <inheritdoc />
