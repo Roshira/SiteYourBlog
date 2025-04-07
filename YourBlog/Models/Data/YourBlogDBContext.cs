@@ -14,6 +14,6 @@ namespace YourBlog.Models.Data
 
         public DbSet<NewsViewModel> News { get; set; }
 
-      
+
     }
 }
