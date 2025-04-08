@@ -17,7 +17,7 @@ namespace YourBlog.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> YourProfile()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -71,12 +71,16 @@ namespace YourBlog.Controllers
                 var result = await _userManager.UpdateAsync(user);
                 if (!result.Succeeded)
                 {
+
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                         Console.WriteLine($"User update error: {error.Description}");
                     }
                     return View(model);
+
+                 
+
                 }
 
                 // Додаємо повідомлення про успішне оновлення
