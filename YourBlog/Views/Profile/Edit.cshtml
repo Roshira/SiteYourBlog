@@ -2,63 +2,150 @@
 @{
     ViewData["Title"] = "Edit Profile";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom right, #f8f9fa, #e3f2fd);
+            margin: 0;
+            padding: 2rem;
+            color: #333;
+        }
 
-<div class="container mt-4">
-    <h1>Edit Profile</h1>
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
 
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
-    }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <form asp-action="Edit" method="post">
-                <div asp-validation-summary="All" class="text-danger"></div>
+        label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
 
-                <!-- Приховане поле для Id -->
-                <input type="hidden" asp-for="Id" />
+        input.form-control,
+        textarea.form-control {
+            border-radius: 8px;
+            padding: 0.6rem;
+            border: 1px solid #ced4da;
+        }
 
-                <div class="form-group mb-3">
-                    <label asp-for="UserName" class="control-label"></label>
-                    <input asp-for="UserName" class="form-control" />
-                    <span asp-validation-for="UserName" class="text-danger"></span>
-                </div>
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
 
-                <div class="form-group mb-3">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" type="email" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
+        .btn {
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-                <div class="form-group mb-3">
-                    <label asp-for="FullName" class="control-label"></label>
-                    <input asp-for="FullName" class="form-control" />
-                    <span asp-validation-for="FullName" class="text-danger"></span>
-                </div>
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
 
-                <div class="form-group mb-3">
-                    <label asp-for="Bio" class="control-label"></label>
-                    <textarea asp-for="Bio" class="form-control" rows="5"></textarea>
-                    <span asp-validation-for="Bio" class="text-danger"></span>
-                </div>
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
 
-                <div class="form-group mb-3">
-                    <label asp-for="ProfilePictureUrl" class="control-label"></label>
-                    <input asp-for="ProfilePictureUrl" class="form-control" />
-                    <span asp-validation-for="ProfilePictureUrl" class="text-danger"></span>
-                    <small class="text-muted">Enter a URL for your profile picture</small>
-                </div>
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            margin-left: 1rem;
+        }
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <a asp-action="YourProfile" class="btn btn-secondary">Cancel</a>
-                </div>
-            </form>
-        </div>
+            .btn-secondary:hover {
+                background-color: #5a6268;
+            }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        small.text-muted {
+            display: block;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h1><i class="fas fa-user-edit"></i> Edit Profile</h1>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+        }
+
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" type="email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Bio" class="control-label"></label>
+                <textarea asp-for="Bio" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Bio" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProfilePictureUrl" class="control-label"></label>
+                <input asp-for="ProfilePictureUrl" class="form-control" />
+                <span asp-validation-for="ProfilePictureUrl" class="text-danger"></span>
+                <small class="text-muted">Enter a URL for your profile picture</small>
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+                <a asp-action="YourProfile" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Cancel</a>
+            </div>
+        </form>
     </div>
-</div>
 
-@section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-}
+    @section Scripts {
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }
+</body>
+</html>

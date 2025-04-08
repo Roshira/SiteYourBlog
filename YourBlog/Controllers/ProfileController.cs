@@ -1,5 +1,4 @@
-﻿// In Controllers/ProfileController.cs
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using YourBlog.Models.ViewModels;
@@ -25,7 +24,8 @@ namespace YourBlog.Controllers
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            return View(user);
+            // Явно вказуємо, що хочемо відобразити представлення "Index"
+            return View("Index", user);
         }
 
         [HttpGet]
@@ -46,7 +46,6 @@ namespace YourBlog.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // Логування помилок валідації
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
                 foreach (var error in errors)
                 {
@@ -61,7 +60,6 @@ namespace YourBlog.Controllers
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            // Оновлюємо тільки ті поля, які можна редагувати
             user.FullName = model.FullName;
             user.Bio = model.Bio;
             user.ProfilePictureUrl = model.ProfilePictureUrl;
@@ -71,21 +69,16 @@ namespace YourBlog.Controllers
                 var result = await _userManager.UpdateAsync(user);
                 if (!result.Succeeded)
                 {
-
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                         Console.WriteLine($"User update error: {error.Description}");
                     }
                     return View(model);
-
-                 
-
                 }
 
-                // Додаємо повідомлення про успішне оновлення
                 TempData["SuccessMessage"] = "Profile updated successfully!";
-                return RedirectToAction("Index");
+                return RedirectToAction("YourProfile");
             }
             catch (Exception ex)
             {
