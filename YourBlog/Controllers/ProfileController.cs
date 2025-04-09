@@ -1,5 +1,4 @@
-﻿// In Controllers/ProfileController.cs
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using YourBlog.Models.ViewModels;
@@ -25,7 +24,8 @@ namespace YourBlog.Controllers
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            return View(user);
+            // Явно вказуємо, що хочемо відобразити представлення "Index"
+            return View("Index", user);
         }
 
         [HttpGet]
@@ -44,31 +44,48 @@ namespace YourBlog.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(UserViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    Console.WriteLine($"Validation error: {error.ErrorMessage}");
+                }
+                return View(model);
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            if (ModelState.IsValid)
+            user.FullName = model.FullName;
+            user.Bio = model.Bio;
+            user.ProfilePictureUrl = model.ProfilePictureUrl;
+
+            try
             {
-                user.FullName = model.FullName;
-                user.Bio = model.Bio;
-                user.ProfilePictureUrl = model.ProfilePictureUrl;
-
                 var result = await _userManager.UpdateAsync(user);
-                if (result.Succeeded)
+                if (!result.Succeeded)
                 {
-                    return RedirectToAction("YourProfile");
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                        Console.WriteLine($"User update error: {error.Description}");
+                    }
+                    return View(model);
                 }
 
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                TempData["SuccessMessage"] = "Profile updated successfully!";
+                return RedirectToAction("YourProfile");
             }
-
-            return View(model);
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception during profile update: {ex.Message}");
+                ModelState.AddModelError(string.Empty, "An error occurred while updating your profile.");
+                return View(model);
+            }
         }
     }
 }

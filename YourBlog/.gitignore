@@ -6,6 +6,10 @@ appsettings.json
 *.userosscache
 *.sln.docstates
 *.json
+
+obj/
+bin/
+
 # Build results
 [Dd]ebug/
 [Rr]elease/

@@ -1,63 +1,112 @@
 ﻿@{
+    ViewData["Title"] = "Subscription Plans";
     var subscriptions = new[]
     {
-        new { Name = "Basic", Price = 5, Features = new[] { "Access to basic content", "Email support" } },
-        new { Name = "Standard", Price = 15, Features = new[] { "All with Basic", "Advanced content", "Priority support" } },
-        new { Name = "Premium", Price = 30, Features = new[] { "All with Standard", "Exclusive content", "Personal manager" } }
+        new { Name = "Basic", Price = 5, Features = new[] { "Access to basic content", "Email support" }, Icon = "fa-leaf", Color = "#28a745" },
+        new { Name = "Standard", Price = 15, Features = new[] { "All with Basic", "Advanced content", "Priority support" }, Icon = "fa-star", Color = "#17a2b8" },
+        new { Name = "Premium", Price = 30, Features = new[] { "All with Standard", "Exclusive content", "Personal manager" }, Icon = "fa-gem", Color = "#d63384" }
     };
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom right, #f8f9fa, #e3f2fd);
+            margin: 0;
+            padding: 2rem;
+            color: #333;
+        }
 
-<h2>
-    Choose your subscription plan
-</h2>
-<div class="subscription-container">
-    @foreach (var sub in subscriptions)
-    {
-        <div class="subscription-plan">
-            <h3>@sub.Name</h3>
-            <p class="price">
-                $@sub.Price /
-                month
-            </p>
-            <ul>
-                @foreach (var feature in sub.Features)
-                {
-                    <li>@feature</li>
-                }
-            </ul>
-            <button class="subscribe-button">
-                Subscribe
-            </button>
-        </div>
-    }
-</div>
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
 
-<style>
-    .subscription-container {
-        display: flex;
-        justify-content: space-around;
-        padding: 20px;
-    }
-    .subscription-plan {
-        border: 2px solid #007bff;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        width: 30%;
-    }
-    .price {
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-    .subscribe-button {
-        background-color: #007bff;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .subscribe-button:hover {
-        background-color: #0056b3;
-    }
-</style>
+        .subscription-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .subscription-plan {
+            background-color: white;
+            border-left: 6px solid #007bff;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            width: 280px;
+            transition: transform 0.3s ease;
+        }
+
+            .subscription-plan:hover {
+                transform: translateY(-5px);
+            }
+
+            .subscription-plan h3 {
+                font-size: 1.5rem;
+                color: #2c3e50;
+                margin-bottom: 0.5rem;
+            }
+
+            .subscription-plan i {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #007bff;
+            margin: 0.5rem 0 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem;
+        }
+
+           
+
+        .subscribe-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+            .subscribe-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <h2><i class="fas fa-dollar-sign"></i> Choose Your Subscription Plan</h2>
+    <div class="subscription-container">
+        @foreach (var sub in subscriptions)
+        {
+            <div class="subscription-plan" style="border-left-color:@sub.Color">
+                <i class="fas @sub.Icon" style="color:@sub.Color"></i>
+                <h3>@sub.Name</h3>
+                <p class="price">$@sub.Price / month</p>
+                <ul>
+                    @foreach (var feature in sub.Features)
+                    {
+                        <li>@feature</li>
+                    }
+                </ul>
+                <button class="subscribe-button">Subscribe</button>
+            </div>
+        }
+    </div>
+</body>
+</html>
