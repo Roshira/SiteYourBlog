@@ -5,6 +5,10 @@ appsettings.json
 *.user
 *.userosscache
 *.sln.docstates
+*.json
+
+obj/
+bin/
 
 # Build results
 [Dd]ebug/
@@ -13,7 +17,7 @@ x64/
 x86/
 [Oo]bj/
 [Bb]in/
-
+.Migrations
 # Rider
 .idea/
 
