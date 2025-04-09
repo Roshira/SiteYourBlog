@@ -66,6 +66,38 @@
         strong {
             color: #2c3e50;
         }
+
+        .reaction-buttons {
+            margin-top: 1rem;
+        }
+
+            .reaction-buttons button {
+                margin-right: 1rem;
+                padding: 0.4rem 1rem;
+                font-size: 1rem;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+
+        .like-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .dislike-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .like-btn:hover {
+            background-color: #218838;
+        }
+
+        .dislike-btn:hover {
+            background-color: #c82333;
+        }
+
     </style>
 </head>
 <body>
@@ -77,6 +109,11 @@
             <div>
                 <h3>@article.Title</h3>
                 <p>@article.Content</p>
+
+                <div class="reaction-buttons">
+                    <button class="like-btn">👍 Like (0)</button>
+                    <button class="dislike-btn">👎 Dislike (0)</button>
+                </div>
             </div>
             <hr />
         }

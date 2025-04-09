@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace YourBlog.Migrations
 {
     /// <inheritdoc />
-    public partial class Upprofile_Fixed : Migration
+    public partial class AddLikesAndDislikes : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -68,7 +68,9 @@ namespace YourBlog.Migrations
                     AccessLevel = table.Column<int>(type: "int", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     MetaKeywords = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    MetaDescription = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    MetaDescription = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Likes = table.Column<int>(type: "int", nullable: false),
+                    Dislikes = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

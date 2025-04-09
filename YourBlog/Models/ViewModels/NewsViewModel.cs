@@ -36,7 +36,8 @@ namespace YourBlog.Models.ViewModel
 
         [StringLength(200)]
         public string MetaDescription { get; set; }
-
+        public int Likes { get; set; }
+        public int Dislikes { get; set; }
     }
 
     public enum AccessLevel
