@@ -9,10 +9,14 @@ namespace YourBlog.Controllers
     public class ProfileController : Controller
     {
         private readonly UserManager<UserViewModel> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public ProfileController(UserManager<UserViewModel> userManager)
+        public ProfileController(
+            UserManager<UserViewModel> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -24,8 +28,8 @@ namespace YourBlog.Controllers
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            // Явно вказуємо, що хочемо відобразити представлення "Index"
-            return View("Index", user);
+            ViewBag.IsAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+            return View(user); // Використовує YourProfile.cshtml
         }
 
         [HttpGet]
@@ -46,11 +50,6 @@ namespace YourBlog.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                foreach (var error in errors)
-                {
-                    Console.WriteLine($"Validation error: {error.ErrorMessage}");
-                }
                 return View(model);
             }
 
@@ -64,28 +63,18 @@ namespace YourBlog.Controllers
             user.Bio = model.Bio;
             user.ProfilePictureUrl = model.ProfilePictureUrl;
 
-            try
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
             {
-                var result = await _userManager.UpdateAsync(user);
-                if (!result.Succeeded)
+                foreach (var error in result.Errors)
                 {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                        Console.WriteLine($"User update error: {error.Description}");
-                    }
-                    return View(model);
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
-
-                TempData["SuccessMessage"] = "Profile updated successfully!";
-                return RedirectToAction("YourProfile");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Exception during profile update: {ex.Message}");
-                ModelState.AddModelError(string.Empty, "An error occurred while updating your profile.");
                 return View(model);
             }
+
+            TempData["SuccessMessage"] = "Profile updated successfully!";
+            return RedirectToAction(nameof(YourProfile));
         }
     }
 }

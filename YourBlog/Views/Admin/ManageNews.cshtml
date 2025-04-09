@@ -1,0 +1,33 @@
+﻿@model IEnumerable<YourBlog.Models.ViewModel.NewsViewModel>
+@{
+    ViewData["Title"] = "Manage News";
+}
+
+<div class="container mt-4">
+    <h2>Manage News</h2>
+    <a asp-action="AddNews" class="btn btn-primary mb-3">Add New Article</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Created</th>
+                <th>Access Level</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var news in Model)
+            {
+                <tr>
+                    <td>@news.Title</td>
+                    <td>@news.CreatedAt.ToShortDateString()</td>
+                    <td>@news.AccessLevel</td>
+                    <td>
+                        <a asp-action="EditNews" asp-route-id="@news.Id" class="btn btn-sm btn-info">Edit</a>
+                        <a asp-action="DeleteNews" asp-route-id="@news.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
