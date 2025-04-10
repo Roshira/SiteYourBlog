@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\YourBlog\\SiteYourBlog\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\DELL\\source\\repos\\SiteYourBlog\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\source\\repos\\SiteYourBlog\\YourBlog\\YourBlog.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:YourBlog\\YourBlog.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "YourBlog.csproj",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\SiteYourBlog\\YourBlog\\YourBlog.csproj",
+              "RelativeDocumentMoniker": "YourBlog\\YourBlog.csproj",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\SiteYourBlog\\YourBlog\\YourBlog.csproj",
+              "RelativeToolTip": "YourBlog\\YourBlog.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-10T17:32:04.479Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
