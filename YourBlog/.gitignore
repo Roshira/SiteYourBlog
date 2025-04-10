@@ -1,28 +1,32 @@
-﻿﻿# Visual Studio
-appsettings.json
-.vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-*.json
-
-obj/
-bin/
-
-# Build results
+﻿# .NET Core / .NET / ASP.NET Core
 [Dd]ebug/
 [Rr]elease/
 x64/
 x86/
-[Oo]bj/
-[Bb]in/
-.Migrations
+bin/
+obj/
+out/
+[Mm]igrations/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+
 # Rider
 .idea/
 
 # Visual Studio Code
 .vscode/
+
+# NuGet packages
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
 
 # ASP.NET
 *.db
@@ -32,22 +36,37 @@ x86/
 *.cache
 *.dSYM/
 
-# Packages
-packages/
-*.nupkg
-
 # Publish folder
 publish/
 
-# User secrets
-secrets.json
-
-# npm packages
+# npm packages (якщо є)
 node_modules/
 
-# Others
+# User secrets (не зберігати локально)
+secrets.json
+
+# Auto-generated MSBuild files
+*.g.cs
+*.g.i.cs
+*.AssemblyInfo.cs
+*.GeneratedMSBuildEditorConfig.editorconfig
+
+# Тестові результати
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Інші тимчасові файли
 *.swp
 *.swo
 *.tmp
 *.temp
 *.log
+
+# Git merge markers
+*.orig
