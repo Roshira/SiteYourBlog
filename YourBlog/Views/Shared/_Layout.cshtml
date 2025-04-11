@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/YourBlog.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -25,11 +26,11 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div style="display: flex; gap: 15px; align-items: center;">
-                        <a asp-controller="Profile" asp-action="YourProfile" style="text-decoration: none; color: black;">
-                            <span style="font-size: 20px;">👤</span> Profile
+                        <a asp-controller="Profile" asp-action="YourProfile" style="text-decoration: none; color: black; display: flex; align-items: center;">
+                            <i class="fas fa-user-circle" style="margin-right: 5px;"></i> Profile
                         </a>
-                        <form asp-controller="Accounts" asp-action="Logout" method="post" style="display: inline;">
-                            <button type="submit" style="background: none; border: none; color: black; cursor: pointer;">
+                        <form asp-controller="Accounts" asp-action="Logout" method="post" style="margin: 0;">
+                            <button type="submit" style="background: none; border: none; color: black; cursor: pointer; padding: 0; font: inherit;">
                                 Logout
                             </button>
                         </form>
