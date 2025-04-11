@@ -9,7 +9,8 @@ appsettings.json
 
 obj/
 bin/
-
+**/obj/
+**/obj/
 # Build results
 [Dd]ebug/
 [Rr]elease/

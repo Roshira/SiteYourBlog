@@ -1,0 +1,48 @@
+# .gitignore для C# UnitTests проекту
+
+# Файли збірки та виконання
+**/[Bb]in/
+**/[Oo]bj/
+**/[Dd]ebug/
+**/[Rr]elease/
+*.exe
+*.dll
+*.pdb
+*.cache
+**/bin/
+**/obj/
+# Файли IDE та редакторів
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.vscode/
+
+# Результати тестування
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Файли пакетів
+**/packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.assets.json
+
+# Автогенеровані файли
+*.GeneratedMSBuildEditorConfig.editorconfig
+*.AssemblyInfo.cs
+*.g.cs
+*.g.i.cs
+
+# Специфічно для юніт-тестів
+**/TestResults/
+*.testlog
+*.testsettings
+
+# Системні файли
+.DS_Store
+Thumbs.db
